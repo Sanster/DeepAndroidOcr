@@ -120,14 +120,13 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
     }
 
     public fun categorySelected(view: View) {
+        item0.setBackgroundColor(Color.TRANSPARENT)
         item1.setBackgroundColor(Color.TRANSPARENT)
-        item2.setBackgroundColor(Color.TRANSPARENT)
         view.setBackgroundColor(0x55ffffff)
         categoryModel = view.tag.toString().toInt()
         when (categoryModel) {
-            0 -> category.setImageResource(R.mipmap.icon_number)
+            0 -> category.setImageResource(R.mipmap.icon_chinese)
             1 -> category.setImageResource(R.mipmap.icon_english)
-            2 -> category.setImageResource(R.mipmap.icon_chinese)
         }
 
         categoryContainer.visibility = View.GONE

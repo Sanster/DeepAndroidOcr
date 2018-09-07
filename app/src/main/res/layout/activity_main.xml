@@ -165,11 +165,25 @@
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_bottom="100%-screen.width/640.0*50"
-        app:layout_height="screen.width/640.0*156"
+        app:layout_height="screen.width/640.0*102"
         app:layout_right="prev.left-screen.width/640.0*8"
         app:layout_width="screen.width/640.0*170">
 
-        <View style="@style/category_item_under_line" />
+        <LinearLayout
+            android:id="@+id/item0"
+            style="@style/category_container"
+            android:onClick="categorySelected"
+            android:tag="0"
+            app:layout_top="prev.bottom">
+
+            <ImageView
+                style="@style/category_item_image"
+                android:src="@mipmap/icon_chinese" />
+
+            <TextView
+                style="@style/category_item_text"
+                android:text="中英文" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/item1"
@@ -188,22 +202,6 @@
         </LinearLayout>
 
         <View style="@style/category_item_under_line" />
-
-        <LinearLayout
-            android:id="@+id/item2"
-            style="@style/category_container"
-            android:onClick="categorySelected"
-            android:tag="2"
-            app:layout_top="prev.bottom">
-
-            <ImageView
-                style="@style/category_item_image"
-                android:src="@mipmap/icon_chinese" />
-
-            <TextView
-                style="@style/category_item_text"
-                android:text="中英文" />
-        </LinearLayout>
 
     </com.github.mmin18.widget.FlexLayout>
 
