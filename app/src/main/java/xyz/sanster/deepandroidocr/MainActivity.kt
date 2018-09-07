@@ -17,7 +17,6 @@ import android.util.Log
 import android.view.SurfaceHolder
 import android.view.View
 import android.view.WindowManager
-import xyz.sanster.deepandroidocr.R
 import xyz.sanster.deepandroidocr.camera.CameraManager
 import xyz.sanster.deepandroidocr.model.TextResult
 import xyz.sanster.deepandroidocr.ocr.CRNNRecoginzer
@@ -50,10 +49,13 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
     private var flashOn: Boolean = false
     var ip: String? = null
 
-    var categoryModel: Int? = 0 // 默认仅数字
+    var CHN: Int = 0
+    var ENG: Int = 1
+    var categoryModel: Int = CHN
 
     lateinit var ctpn: CTPNDetector
-    lateinit var crnn: CRNNRecoginzer
+    lateinit var chnCrnn: CRNNRecoginzer
+    lateinit var engCrnn: CRNNRecoginzer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +79,8 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
         sharedPref = getPreferences(Context.MODE_PRIVATE)
 
         ctpn = CTPNDetector(this)
-        crnn = CRNNRecoginzer(this, "simple_mobile_crnn.pb", "chn.txt")
+        chnCrnn = CRNNRecoginzer(this, "simple_mobile_crnn.pb", "chn.txt")
+        engCrnn = CRNNRecoginzer(this, "raw_eng_crnn.pb", "eng.txt")
     }
 
     private fun init() {
@@ -125,8 +128,8 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
         view.setBackgroundColor(0x55ffffff)
         categoryModel = view.tag.toString().toInt()
         when (categoryModel) {
-            0 -> category.setImageResource(R.mipmap.icon_chinese)
-            1 -> category.setImageResource(R.mipmap.icon_english)
+            CHN -> category.setImageResource(R.mipmap.icon_chinese)
+            ENG -> category.setImageResource(R.mipmap.icon_english)
         }
 
         categoryContainer.visibility = View.GONE
