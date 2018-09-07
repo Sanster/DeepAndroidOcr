@@ -1,0 +1,210 @@
+<com.github.mmin18.widget.FlexLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="xyz.sanster.deepandroidocr.MainActivity">
+
+    <SurfaceView
+        android:id="@+id/previewSurface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/debugImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_right="100%"
+        app:layout_top="0dp" />
+
+    <xyz.sanster.deepandroidocr.ViewfinderView
+        android:id="@+id/viewfinderView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/progressingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/loading_view_bg"
+            android:padding="10dp">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="正在处理..."
+                android:textColor="#FF000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.github.mmin18.widget.FlexLayout
+        android:id="@+id/resultView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/result_text"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/detectImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:scaleType="fitCenter"
+            app:layout_height="screen.width/640.0*276"
+            app:layout_left="screen.width/640.0*16"
+            app:layout_top="screen.width/640.0*16"
+            app:layout_width="screen.width/640.0*300" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="16dp"
+            app:layout_height="prev.height"
+            app:layout_right="100%-screen.width/640.0*16"
+            app:layout_top="prev.top"
+            app:layout_width="prev.width">
+
+            <TextView
+                android:id="@+id/ocrResultText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/result_view" />
+        </ScrollView>
+
+
+        <Button
+            android:id="@+id/continueBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#3E50B4"
+            android:text="完 成"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_centerX="50%"
+            app:layout_height="screen.width/640.0*36"
+            app:layout_top="prev.bottom+20dp"
+            app:layout_width="screen.width/640.0*93" />
+
+    </com.github.mmin18.widget.FlexLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/failedView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+
+    <com.github.mmin18.widget.FlexLayout
+        android:id="@+id/menuContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#66171935"
+        app:layout_height="100%"
+        app:layout_right="100%"
+        app:layout_width="screen.width/640.0*100">
+
+        <ImageButton
+            android:id="@+id/flashBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/icon_flash_off"
+            app:layout_centerX="50%"
+            app:layout_height="this.width"
+            app:layout_top="screen.width/640.0*59"
+            app:layout_width="screen.width/640.0*33" />
+
+        <ImageView
+            android:id="@+id/takeImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_camera"
+            app:layout_centerX="50%"
+            app:layout_centerY="50%"
+            app:layout_height="this.width"
+            app:layout_width="screen.width/640.0*56" />
+
+        <ImageView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon_chinese"
+            app:layout_bottom="100%-screen.width/640.0*59"
+            app:layout_centerX="50%"
+            app:layout_height="this.width"
+            app:layout_width="screen.width/640.0*33" />
+
+    </com.github.mmin18.widget.FlexLayout>
+
+    <com.github.mmin18.widget.FlexLayout
+        android:id="@+id/categoryContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#66000000"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_bottom="100%-screen.width/640.0*50"
+        app:layout_height="screen.width/640.0*156"
+        app:layout_right="prev.left-screen.width/640.0*8"
+        app:layout_width="screen.width/640.0*170">
+
+        <View style="@style/category_item_under_line" />
+
+        <LinearLayout
+            android:id="@+id/item1"
+            style="@style/category_container"
+            android:onClick="categorySelected"
+            android:tag="1"
+            app:layout_top="prev.bottom">
+
+            <ImageView
+                style="@style/category_item_image"
+                android:src="@mipmap/icon_english" />
+
+            <TextView
+                style="@style/category_item_text"
+                android:text="英文" />
+        </LinearLayout>
+
+        <View style="@style/category_item_under_line" />
+
+        <LinearLayout
+            android:id="@+id/item2"
+            style="@style/category_container"
+            android:onClick="categorySelected"
+            android:tag="2"
+            app:layout_top="prev.bottom">
+
+            <ImageView
+                style="@style/category_item_image"
+                android:src="@mipmap/icon_chinese" />
+
+            <TextView
+                style="@style/category_item_text"
+                android:text="中英文" />
+        </LinearLayout>
+
+    </com.github.mmin18.widget.FlexLayout>
+
+</com.github.mmin18.widget.FlexLayout>

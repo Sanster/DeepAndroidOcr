@@ -1,0 +1,21 @@
+<resources>
+    <item name="detect" type="id" />
+    <item name="detect_failed" type="id" />
+    <item name="detect_succeeded" type="id" />
+    <item name="detect_debug" type="id" />
+
+    <item name="draw_detect_area" type="id" />
+    <item name="show_progress_bar" type="id" />
+    <item name="hide_progress_bar" type="id" />
+
+    <item name="ocr_continuous_decode" type="id" />
+    <item name="ocr_continuous_decode_failed" type="id" />
+    <item name="ocr_continuous_decode_succeeded" type="id" />
+    <item name="ocr_decode" type="id" />
+    <item name="ocr_decode_failed" type="id" />
+    <item name="ocr_decode_succeeded" type="id" />
+
+    <item name="quit" type="id" />
+    <item name="restart_preview" type="id" />
+    <item name="start_detect" type="id" />
+</resources>

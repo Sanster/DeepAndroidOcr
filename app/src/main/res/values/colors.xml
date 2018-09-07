@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">@color/viewfinder_detect_area</color>
+
+    <color name="viewfinder_mask">#b0000000</color>
+    <color name="viewfinder_detect_area">#2459ea</color>
+    <color name="viewfinder_roi">#26ea03</color>
+    <color name="transparent">#00000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="result_text">#FAFAFA</color>
+
+    <color name="loading_view_bg">#FFFFFFFF</color>
+    <color name="loading_view_text">#b0000000</color>
+</resources>

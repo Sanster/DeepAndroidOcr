@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>数字</item>
+        <item>英文、数字</item>
+        <item>中、英、数</item>
+    </string-array>
+</resources>
