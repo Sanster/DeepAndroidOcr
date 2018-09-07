@@ -7,7 +7,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
-import xyz.sanster.deepandroidocr.R
 import xyz.sanster.deepandroidocr.camera.PlanarYUVLuminanceSource
 import xyz.sanster.deepandroidocr.model.TextResult
 
@@ -75,7 +74,14 @@ internal class DecodeHandler(private val activity: MainActivity) : Handler() {
             Log.d(TAG, "CTPN total time: ${System.currentTimeMillis() - start} ms")
 
             start = System.currentTimeMillis()
-            val texts = activity.crnn.run(data, width, height, textRois)
+            val texts = when (activity.categoryModel) {
+                activity.CHN -> activity.chnCrnn.run(data, width, height, textRois)
+                activity.ENG -> activity.engCrnn.run(data, width, height, textRois)
+                else -> {
+                    activity.chnCrnn.run(data, width, height, textRois)
+                }
+            }
+
             Log.d(TAG, "CRNN total time: ${System.currentTimeMillis() - start} ms")
 
             textRois.forEachIndexed { index, rect ->
